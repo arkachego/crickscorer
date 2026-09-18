@@ -215,11 +215,11 @@ Frontend packages need dependencies installed once on the host (`cd admin && npm
 
 ### What is broken
 
-| Area | Symptom | Where to look |
+| Area | Symptom | Failing test cases |
 | --- | --- | --- |
-| **Server** | Strike-rotation / wide **crossing runs** disagree with cricket rules. A plain wide (penalty only) is treated as if batters changed ends. | `server/app/services/strike_rotation.py` — helpers that decide how many runs move batters between ends. Covered by `test_crossing_runs_normal_and_extras` in `server/tests/test_strike_rotation.py`. |
-| **Admin** | On a completed match that should be a **win by runs**, the match-result summary shows a **wrong margin** (the wording still looks plausible; the number is wrong). | Admin match-result helpers (e.g. `computeMatchResult` in `admin/src/lib/api/types.ts`). Covered by `shows match result summary when the match is completed` in `admin/src/pages/ScoringPage.test.tsx`. Viewer has its own copy of this logic — fix Admin independently. |
-| **Viewer** | In the second-innings **chase** panel, “need N runs from M balls” and/or **required run rate** are slightly wrong. Balls remaining may look fine; runs-needed math is off. | Viewer chase helpers (e.g. `computeChaseSummary` in `viewer/src/lib/utils.ts`). Covered by `shows chase target and required rate in the second innings` in `viewer/src/pages/ScoreboardPage.test.tsx`. |
+| **Server** | Strike-rotation / wide **crossing runs** disagree with cricket rules. A plain wide (penalty only) is treated as if batters changed ends. | `test_crossing_runs_normal_and_extras` in `server/tests/test_strike_rotation.py` |
+| **Admin** | On a completed match that should be a **win by runs**, the match-result summary shows a **wrong margin** (the wording still looks plausible; the number is wrong). | `shows match result summary when the match is completed` in `admin/src/pages/ScoringPage.test.tsx` |
+| **Viewer** | In the second-innings **chase** panel, “need N runs from M balls” and/or **required run rate** are slightly wrong. Balls remaining may look fine; runs-needed math is off. | `shows chase target and required rate in the second innings` in `viewer/src/pages/ScoreboardPage.test.tsx` |
 
 ### Domain rules to restore
 
