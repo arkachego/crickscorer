@@ -69,8 +69,6 @@ Supported formats:
 | Polling | Not used |
 | Optimistic scoring | Not used |
 
-Persistent entity IDs are **UUIDv7** (`uuid` + PostgreSQL `uuidv7()`). See [`docs/architecture/UUIDv7_Entity_IDs.md`](docs/architecture/UUIDv7_Entity_IDs.md).
-
 ---
 
 ## Application stack
@@ -85,7 +83,6 @@ crickscorer/
 ├── server/               # FastAPI backend
 ├── admin/                # Scorer React app
 ├── viewer/               # Spectator React app
-└── docs/                 # Plans, prompts, phase outputs
 ```
 
 ### Services (Docker Compose)
