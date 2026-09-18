@@ -1,0 +1,1 @@
+"""CrickScorer FastAPI application package."""

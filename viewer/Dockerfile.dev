@@ -1,0 +1,19 @@
+# Phase 7 — Vite + React Viewer development container.
+
+FROM node:22.12.0-bookworm-slim
+
+ENV NODE_ENV=development
+
+WORKDIR /app
+
+RUN chown node:node /app
+USER node
+
+COPY --chown=node:node package.json package-lock.json* ./
+RUN npm install
+
+COPY --chown=node:node . .
+
+EXPOSE 5174
+
+CMD ["sh", "-c", "npm install && npm run dev -- --host 0.0.0.0 --port ${PORT:-5174}"]

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "crickscorer-server"
+version = "0.20.0"
+description = "CrickScorer FastAPI backend"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi==0.141.1",
+  "uvicorn[standard]==0.53.0",
+  "SQLAlchemy==2.0.52",
+  "alembic==1.19.1",
+  "psycopg[binary]==3.3.4",
+  "python-socketio==5.13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx==0.28.1",
+  "pytest==9.0.3",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

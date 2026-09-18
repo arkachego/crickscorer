@@ -1,0 +1,15 @@
+{
+  "name": "crickscorer",
+  "private": true,
+  "version": "0.1.0",
+  "description": "CrickScorer development orchestration (Docker Compose)",
+  "scripts": {
+    "start": "docker compose up --build",
+    "stop": "docker compose down",
+    "down": "docker compose down",
+    "test": "bash -c 'fail=0; docker compose exec -T server pytest -q || fail=1; npm --prefix admin test || fail=1; npm --prefix viewer test || fail=1; exit $fail'",
+    "test:server": "docker compose exec -T server pytest -q",
+    "test:admin": "npm --prefix admin test",
+    "test:viewer": "npm --prefix viewer test"
+  }
+}
